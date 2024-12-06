@@ -1,0 +1,19 @@
+[phases.setup]
+nixPkgs = ["python39", "gcc", "nodejs-18.x"]
+
+[phases.install]
+cmds = [
+  "python -m pip install --upgrade pip",
+  "pip install poetry",
+  "poetry install --no-dev",
+  "cd src/frontend && npm install"
+]
+
+[phases.build]
+cmds = [
+  "cd src/frontend && npm run build",
+  "poetry build"
+]
+
+[start]
+cmd = "poetry run python -m langflow"
