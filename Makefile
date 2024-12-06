@@ -230,6 +230,9 @@ else
 	@make start host=$(host) port=$(port) log_level=debug
 endif
 
+run: ## Run the application in production mode
+	@echo "Starting Langflow in production mode..."
+	node src/index.js
 
 setup_devcontainer: ## set up the development container
 	make install_backend
